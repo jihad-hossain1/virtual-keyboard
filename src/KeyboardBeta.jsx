@@ -1,3 +1,4 @@
+import React from "react";
 const letters = [
   {
     alph: "a",
@@ -136,59 +137,35 @@ const letters = [
   },
 ];
 
-const Keyboard = ({ handleKeyClick, handleNumberClick }) => {
-  const lett = "abcdefghijklmnopqrstuvwxyz ";
-  //   const lett = "1 ";
+const KeyboardBeta = ({ handleKeyClick, handleNumberClick }) => {
   const handleKeyClic = (l) => {
     handleKeyClick(l);
   };
-  const handleNumberClic = (l) => {
-    handleNumberClick(l);
+  const handleNumberClic = (l, n) => {
+    handleNumberClick(l, n);
   };
-
   return (
-    <div className="max-w-[800px] px-4 mx-auto">
+    <div>
       <div>
-        {lett.split("").map((key, index) => (
-          <div
-            key={key}
-            // onClick={() => handleKeyClic(key)}
-            onClick={() => handleNumberClic(index + 1)}
-            className="inline-block"
-          >
-            <button
-              onClick={() => handleKeyClic(key)}
-              className="border border-emerald-400 rounded shadow-sm hover:shadow-emerald-400 py-1 px-2 md:p-4 m-1 drop-shadow uppercase "
-            >
-              {key} <span className="text-xs">{index + 1}</span>
-            </button>
-          </div>
-        ))}
-      </div>
-      {/* <div>
-        {lett.split("").map((key, index) => (
-          <button
-            className="border border-emerald-400 rounded shadow-sm hover:shadow-emerald-400 py-1 px-2 md:p-4 m-1 drop-shadow uppercase"
-            key={key}
-            onClick={() => handleNumberClic(index + 1)}
-          >
-            <span className="text-xs">{index + 1}</span>
-          </button>
-        ))}
-      </div> */}
-      {/* <div>
         <div className="my-6 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100"></div>
         {letters.map(({ alph, numeric, str }) => (
-          <div key={alph} className="inline-block">
-            <button className="border border-cyan-400 rounded shadow-sm hover:shadow-cyan-400 py-1 px-2 md:p-4 m-1 drop-shadow uppercase ">
+          <div
+            key={alph}
+            className="inline-block"
+            onClick={() => handleNumberClic(str, numeric)}
+          >
+            <button
+              className="border border-cyan-400 rounded shadow-sm hover:shadow-cyan-400 py-1 px-2 md:p-4 m-1 drop-shadow uppercase "
+              onClick={() => handleKeyClic(alph)}
+            >
               <span className="">{alph}</span>{" "}
               <span className="text-xs">{numeric}</span>
             </button>
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };
 
-export default Keyboard;
+export default KeyboardBeta;
